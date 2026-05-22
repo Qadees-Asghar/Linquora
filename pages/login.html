@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login Page</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <header>
+        <h1>login Page</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="login-box">
+        <h1>Login</h1>
+        <div class="role">
+            <label><input type="radio" name="role" value="doctor" checked> Doctor</label>
+            <label><input type="radio" name="role" value="patient" checked> Patient</label>
+        </div>
+        <form action="" method="post">
+            <label for="CNIC">CNIC</label>
+            <input type="text" placeholder="Enter your CNIC" required name="CNIC">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter your password" required name="password">
+            <div class="button">
+                <input type="submit" value="login">
+            </div>
+            <div class="register">
+                Not a member? <a href="#" onclick="goToRegister()">Create account</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function goToRegister() {
+            const role = document.querySelector('input[name="role"]:checked').value;
+
+            if (role === "doctor") {
+                window.location.href = "doctor.html";
+            } else {
+                window.location.href = "patient.html";
+            }
+        }
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const role = document.querySelector('input[name="role"]:checked').value;
+            const cnic = document.querySelector('input[name="CNIC"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            if (cnic === "" || password === "") {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            let users = [];
+            if (role === "doctor") {
+                users = JSON.parse(localStorage.getItem('doctors') || '[]');
+            } else {
+                users = JSON.parse(localStorage.getItem('patients') || '[]');
+            }
+
+
+            const user = users.find(u => (u.cnicid === cnic || u.cnicid === cnic || u.cnicid === cnic) && u.password === password);
+
+            if (user) {
+                alert(role.charAt(0).toUpperCase() + role.slice(1) + " Login Successful");
+
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid Username or Password");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor</title>
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+  <header>
+    <h1>Doctor Registration</h1>
+    <nav>
+      <a href="../index.html">Back to Home</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="title">Start Registration</div>
+    <div class="content">
+
+      <form id="doctorForm">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Name</span>
+            <input type="text" placeholder="Enter your full name" required name="doctor">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Gender</span>
+            <input type="text" placeholder="Enter your gender" required name="gender">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Date of Birth</span>
+            <input type="date" required name="date_of_birth">
+          </div>
+
+          <div class="input-box">
+            <span class="details">CNIC ID</span>
+            <input type="text" placeholder="Enter your CNIC" required name="cnicid">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" required name="email">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Mobile Number</span>
+            <input type="text" placeholder="Enter your mobile number " required name="mobilenumber">
+          </div>
+
+          <div class="input-box">
+            <span class="detial">Home Address</span>
+            <input type="text" placeholder="Enter your address" required name="address">
+          </div>
+
+          <div class="input-box">
+            <span class="details">City</span>
+            <input type="text" placeholder="Enter your city" required name="city">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Medical Registration No.</span>
+            <input type="text" placeholder="Enter your registration no." required name="number">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Specialization</span>
+            <input type="text" placeholder="Enter your specialization" required name="specialization">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Department</span>
+            <input type="text" placeholder="Enter your department" required name="department">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Joining Date</span>
+            <input type="date" required name="date_of_joining">
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" required name="password">
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+      <script>
+        document.getElementById('doctorForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const data = Object.fromEntries(formData.entries());
+          const doctors = JSON.parse(localStorage.getItem('doctors') || '[]');
+          if (doctors.some(d => d.email === data.email || d.cnicid === data.cnicid)) {
+            alert('Doctor with this Email or CNIC already exists!');
+            return;
+          }
+          doctors.push(data);
+          localStorage.setItem('doctors', JSON.stringify(doctors));
+          alert('Doctor Registered Successfully!');
+          window.location.href = 'login.html';
+        });
+      </script>
+</body>
+
+</html>

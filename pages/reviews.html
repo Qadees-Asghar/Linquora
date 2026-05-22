@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: #ffffff;
+      border-bottom: 2px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #007bff;
+      text-transform: uppercase;
+    }
+
+    header nav a {
+      margin-left: 25px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #007bff;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .rating-summary {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+    }
+
+    .rating-summary h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .stars {
+      color: #ffc107;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .review-card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .review-card h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .department {
+      font-size: 14px;
+      color: #007bff;
+      margin-bottom: 8px;
+    }
+
+    .review-card p {
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    .review-card span {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .review-form {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .review-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .button input {
+      background: #007bff;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 14px 50px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 123, 255, 0.35);
+    }
+
+    .button input:hover {
+      background: #0056b3;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1024px) {
+      header {
+        padding: 16px 40px;
+      }
+
+      .container {
+        padding: 35px 20px;
+      }
+
+      .rating-summary,
+      .review-form {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 14px 20px;
+        text-align: center;
+      }
+
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      header nav a {
+        margin: 6px 10px;
+        font-size: 15px;
+      }
+
+      .reviews {
+        gap: 20px;
+      }
+
+      .rating-summary h2 {
+        font-size: 24px;
+      }
+
+      .review-form {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header .logo {
+        font-size: 22px;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 8px;
+      }
+
+      .container {
+        padding: 25px 15px;
+      }
+
+      .rating-summary {
+        padding: 22px;
+      }
+
+      .rating-summary h2 {
+        font-size: 22px;
+      }
+
+      .stars {
+        font-size: 20px;
+      }
+
+      .review-card {
+        padding: 20px;
+      }
+
+      .review-card h3 {
+        font-size: 16px;
+      }
+
+      .review-card p {
+        font-size: 14px;
+      }
+
+      .review-form h2 {
+        font-size: 22px;
+      }
+
+      input[type="text"],
+      select,
+      textarea {
+        font-size: 14px;
+        padding: 11px;
+      }
+
+      .button input {
+        font-size: 16px;
+        padding: 12px 40px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      header {
+        padding: 12px 15px;
+      }
+
+      header .logo {
+        font-size: 20px;
+      }
+
+      header nav a {
+        font-size: 13px;
+      }
+
+      .rating-summary h2 {
+        font-size: 20px;
+      }
+
+      .stars {
+        font-size: 18px;
+      }
+
+      .review-form {
+        padding: 20px 15px;
+      }
+
+      .button input {
+        font-size: 15px;
+        padding: 11px 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Hospital</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="departments.html">Departments</a>
+      <a href="nurses.html">Nurses</a>
+
+      <a href="reviews.html">Review</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="rating-summary">
+      <h2>Overall Rating</h2>
+      <div class="stars">★★★★★</div>
+      <p>4.8 / 5 from 1,200+ patients</p>
+    </div>
+    <div class="reviews">
+      <div class="review-card">
+        <h3>Syed M Farooq Hassan</h3>
+        <div class="department">Emergency • Dr. Conrad Hawkins</div>
+        <div class="stars">★★★★★</div>
+        <p>Fast emergency response and very supportive staff.</p>
+        <span>Verified Patient • 2025</span>
+      </div>
+      <div class="review-card">
+        <h3>Qadees Asghar</h3>
+        <div class="department">Cardiology • Dr. AJ Austin</div>
+        <div class="stars">★★★★☆</div>
+        <p>Clean environment and professional cardiology team.</p>
+        <span>Verified Patient • 2025</span>
+      </div>
+      <div class="review-card">
+        <h3>Aman Fatima</h3>
+        <div class="department">Neurology • Dr. Billie Sutton</div>
+        <div class="stars">★★★★★</div>
+        <p>Excellent care for patient. Highly recommended.</p>
+        <span>Verified Patient • 2025</span>
+      </div>
+    </div>
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name" required name="name">
+        </div>
+        <div class="form-group">
+          <label>Department</label>
+          <select id="department" required name="department">
+            <option value="" disabled selected>Choose a department</option>
+            <option>Emergency</option>
+            <option>Cardiology</option>
+            <option>Neurology</option>
+            <option>Pediatrics</option>
+            <option>Orthopedics</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Doctor</label>
+          <select id="doctor" required name="doctor">
+            <option value="" disabled selected>Choose a Specialist</option>
+            <option>Dr. Conrad Hawkins</option>
+            <option>Dr. Bashir Hameed</option>
+            <option>Dr. Magalie Lenlanc</option>
+            <option>Dr Devon Pravesh</option>
+            <option>Dr. AJ Austin</option>
+            <option>Dr. Randolph Bell</option>
+            <option>Dr. Topher Callahan</option>
+            <option>Dr. Lauren Bloom</option>
+            <option>Dr. Kitt Voss</option>
+            <option>Dr. Morgan Reznick</option>
+            <option>Dr. Lrving Feldman</option>
+            <option>Dr. Jordon Alexander</option>
+            <option>Dr. Iggy Frome</option>
+            <option>Dr. theo Hunter</option>
+            <option>Dr. Kincaid Sullivan</option>
+            <option>Dr. Nicolette Nevin</option>
+            <option>Dr. Bille Sutton</option>
+            <option>Dr. Barrett Cain</option>
+            <option>Dr Floyd Reynolds</option>
+            <option>Dr. shawn Murphy</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Review</label>
+          <textarea placeholder="Share your experience" required></textarea>
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit Review">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

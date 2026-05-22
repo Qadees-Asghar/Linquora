@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <style>
+    .chief-of-surgery {
+      background-color: #f5f5f5;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .chief-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .chief-img {
+      width: 240px;
+      height: 260px;
+      object-fit: cover;
+      border: 1px solid #007BFF;
+      border-radius: 10px;
+    }
+
+    .chief-info {
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .chief-info h2 {
+      margin-bottom: 10px;
+      font-size: 28px;
+      color: #007bff;
+    }
+
+    .chief-info p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .department {
+      margin-bottom: 60px;
+    }
+
+    .department h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #007bff;
+      border-bottom: 3px solid #007bff;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+
+    .doctors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+
+    .doctor-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .doctor-card img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .doctor-card h3 {
+      margin: 15px 10px 8px;
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+
+    .doctor-card p {
+      font-size: 0.95rem;
+      padding: 0 15px;
+      color: #555;
+    }
+
+    @media (max-width: 1024px) {
+      header {
+        padding: 16px 40px;
+      }
+
+      .chief-container {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 20px;
+        text-align: center;
+      }
+
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      header nav a {
+        margin: 6px 10px;
+        font-size: 15px;
+      }
+
+      .chief-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .chief-info {
+        text-align: center;
+      }
+
+      .chief-info h2 {
+        font-size: 24px;
+      }
+
+      .chief-info p {
+        font-size: 15px;
+      }
+
+      .doctor-card img {
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header .logo {
+        font-size: 22px;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 8px;
+      }
+
+      .chief-img {
+        width: 200px;
+        height: 220px;
+      }
+
+      .chief-info h2 {
+        font-size: 22px;
+      }
+
+      .chief-info p {
+        font-size: 14px;
+      }
+
+      .department h2 {
+        font-size: 1.6rem;
+      }
+
+      .doctor-card img {
+        margin-top: 10px;
+        width: 80%;
+        border-radius: 10px;
+        height: 320px;
+      }
+
+      .container {
+        padding: 30px 15px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      header {
+        padding: 12px 15px;
+      }
+
+      header .logo {
+        font-size: 20px;
+      }
+
+      header nav a {
+        font-size: 13px;
+      }
+
+      .chief-img {
+        width: 170px;
+        height: 190px;
+      }
+
+      .chief-info h2 {
+        font-size: 20px;
+      }
+
+      .chief-info p {
+        font-size: 13px;
+      }
+
+      .doctor-card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Hospital</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="departments.html">Departments</a>
+      <a href="nurses.html">Nurses</a>
+
+      <a href="reviews.html">Review</a>
+    </nav>
+  </header>
+  <section class="chief-of-surgery">
+    <div class="chief-container">
+      <img src="../images/Dr Max.jpg" alt="Dr. Max Goodwin" class="chief-img">
+      <div class="chief-info">
+        <h2>Dr. Max Goodwin</h2>
+        <p>Chief of Surgery<br>A visionary surgeon leading our surgical team with expertise, dedication,
+          and innovation in advanced surgical techniques.</p>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="department">
+      <h2>Emergency</h2>
+      <div class="doctors">
+        <div class="doctor-card">
+          <img src="../images/Dr Conrad.jpg" alt="Dr Conrad">
+          <h3>Dr. Conrad Hawkins</h3>
+          <p>Chief Attending Physician <br>Internal Medicine<br>Combines intelligence with
+            emotionaldepth and vulnerability</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Haq.jpg" alt="Dr Haq">
+          <h3>Dr. Bashir Hameed</h3>
+          <p>Resident<br>Transplant Surgeon<br>Showcase how transplant medicine differs from general
+            medicine</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/DR Mags.jpg" alt="Dr Mags">
+          <h3>Dr. Magalie"Mags" Lenlanc</h3>
+          <p>Resident<br>Truma Surgeon<br>Emotionally guarded and deeply committed to her patients</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr pervish.jpg" alt="Dr pervish">
+          <h3>Dr. Devon Pravesh</h3>
+          <p>Intern<br>Internal Medicine<br>Represents growth,mistakes and learning underpressure</p>
+        </div>
+      </div>
+    </div>
+    <div class="department">
+      <h2>Cardiology</h2>
+      <div class="doctors">
+        <div class="doctor-card">
+          <img src="../images/Dr AJ.jpg" alt="Dr Aj">
+          <h3>Dr. AJ Austin</h3>
+          <p>Cardiothoracic Surgeon<br>Combines elite surgical talent with strong emotion arcs</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Death.jpg" alt="Dr Death">
+          <h3>Dr. Randolph Bell</h3>
+          <p>Senior Cardiologist<br>General Surgeon</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr tc.jpg" alt="Dr Tc">
+          <h3>Dr. Topher Callahan</h3>
+          <p>US.Army Medic<br>Cardic and General Surgeon<br>Blends battlefield Medicine with civiian
+            emergency care</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Bloom.jpg" alt="Dr Bloom">
+          <h3>Dr. Lauren Bloom</h3>
+          <p>Resident Cardiothoracic Surgeon<br>Combine Medical experties with emotional deepth
+            ,showing the roll of best surgeons</p>
+        </div>
+      </div>
+    </div>
+    <div class="department">
+      <h2>Orthopedics</h2>
+      <div class="doctors">
+        <div class="doctor-card">
+          <img src="../images/Dr Voss.jpg" alt="Dr Voss">
+          <h3>Dr. Kit Voss</h3>
+          <p>Orthopedic Surgeon<br>Strong,confident and commanding in clinical role</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Morgan.jpg" alt="Dr Morgan">
+          <h3>Dr. Morgan Reznick</h3>
+          <p>Orthopedic Surgeon<br>Compassionate,idealistic and determined towards her profession</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Feldman.jpg" alt="Dr Feldman">
+          <h3>Dr. Irving Feldman</h3>
+          <p>Orthopedic Specialist<br>Kind and well-liked by Colleages</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Jordon.jpg" alt="Dr Jordon">
+          <h3>Dr. Jordon Alexander</h3>
+          <p>Resident Orthopedic Surgeon<br>Emotionally guarded and determined towards her profession</p>
+        </div>
+      </div>
+    </div>
+    <div class="department">
+      <h2>Pediatrics</h2>
+      <div class="doctors">
+        <div class="doctor-card">
+          <img src="../images/Dr igy.png" alt="Dr iggy">
+          <h3>Dr. Iggy Frome</h3>
+          <p>Pediatrician<br>Empathetic,Compassionate,and approachable</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr theo.jpg" alt="Dr Theo">
+          <h3>Dr. Theo Hunter</h3>
+          <p>Pediatrician Emergency Medicine<br>Dedicated and Empathetic</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Sullvian.jpg" alt="Dr Sullvian">
+          <h3>Dr. Kincaid Sullivan</h3>
+          <p>Pediatric Specialist<br>Insightful and Perceptive</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Navin.jpg" alt="Dr Navin">
+          <h3>Dr. Nicolette Nevin</h3>
+          <p>Pediatrician<br>Empathetic,compassionate,and dedicated</p>
+        </div>
+      </div>
+    </div>
+    <div class="department">
+      <h2>Neurology</h2>
+      <div class="doctors">
+        <div class="doctor-card">
+          <img src="../images/Dr Sutton.jpg" alt="Dr. Sutton">
+          <h3>Dr. Billie Sutton</h3>
+          <p> Chief Neurosurgeon<br>Highly skilled and ambitiousand show leader ship qualities</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Cain.jpg" alt="Dr. Cain">
+          <h3>Dr. Barrett Cain</h3>
+          <p>Neurosurgery<br>Handles complex neurosurgical cases</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Rynolds.jpg" alt="Dr. S">
+          <h3>Dr. Floyd Reynolds</h3>
+          <p>Neuro Specialist<br>Brilliant and highly skilled</p>
+        </div>
+        <div class="doctor-card">
+          <img src="../images/Dr Shwan.jpg" alt="Dr. Shwan">
+          <h3>Dr. Shawn Murphy</h3>
+          <p>Resident Neurologist<br>Focus on patient outcome and ethicalcare</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

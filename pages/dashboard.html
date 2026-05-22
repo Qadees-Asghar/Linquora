@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Hospital Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 60px;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #007bff;
+            text-transform: uppercase;
+        }
+
+        header nav a {
+            margin-left: 25px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #007bff;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+        }
+
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .action-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .action-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: #e7f1ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #007bff;
+            font-size: 2rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .action-card:hover .icon-box {
+            background: #007bff;
+            color: white;
+        }
+
+        .action-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .action-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .profile-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+        
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .profile-item strong {
+            display: block;
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .profile-item span {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .welcome-section {
+                padding: 30px;
+                text-align: center;
+            }
+
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Hospital</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="#" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="welcome-section">
+            <h1 id="welcomeUser">Welcome back!</h1>
+            <p id="welcomeMessage">Ready to manage your health journey?</p>
+        </div>
+
+        <!-- Patient Profile Section -->
+        <div id="patientProfile" class="profile-section">
+            <h2 style="margin-bottom: 20px; color: #007bff; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">My
+                Profile (Patient)</h2>
+            <div class="profile-grid">
+                <div class="profile-item">
+                    <strong>Name</strong>
+                    <span id="pName">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>CNIC</strong>
+                    <span id="pCnic">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Age / Gender</strong>
+                    <span id="pAgeGender">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Contact</strong>
+                    <span id="pContact">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Email</strong>
+                    <span id="pEmail">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Blood Group</strong>
+                    <span id="pBlood">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Address</strong>
+                    <span id="pAddress">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Guardian</strong>
+                    <span id="pGuardian">-</span>
+                </div>
+                <div class="profile-item" style="grid-column: 1 / -1;">
+                    <strong>Medical History</strong>
+                    <span id="pMedical">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctor Profile Section -->
+        <div id="doctorProfile" class="profile-section">
+            <h2 style="margin-bottom: 20px; color: #007bff; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">My
+                Profile (Doctor)</h2>
+            <div class="profile-grid">
+                <div class="profile-item">
+                    <strong>Name</strong>
+                    <span id="dName">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Specialization</strong>
+                    <span id="dSpec">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Department</strong>
+                    <span id="dDept">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Registration No.</strong>
+                    <span id="dReg">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>CNIC</strong>
+                    <span id="dCnic">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Contact</strong>
+                    <span id="dContact">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Email</strong>
+                    <span id="dEmail">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>City</strong>
+                    <span id="dCity">-</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Joining Date</strong>
+                    <span id="dJoin">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Actions -->
+        <div id="patientActions" class="actions-grid" style="display: none;">
+            <a href="appointment.html" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Book Appointment</h3>
+                <p>Schedule a visit with our specialists</p>
+            </a>
+
+            <a href="payment.html" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3>Make Payment</h3>
+                <p>Securely pay your medical bills</p>
+            </a>
+
+            <a href="departments.html" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-hospital-user"></i>
+                </div>
+                <h3>Find Doctors</h3>
+                <p>Browse departments and specialists</p>
+            </a>
+
+            <a href="reviews.html" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Reviews</h3>
+                <p>Share your experience with us</p>
+            </a>
+        </div>
+
+        <!-- Doctor Actions -->
+        <div id="doctorActions" class="actions-grid" style="display: none;">
+            <a href="#" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>My Schedule</h3>
+                <p>View your upcoming appointments</p>
+            </a>
+
+            <a href="#" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-procedures"></i>
+                </div>
+                <h3>Patient Records</h3>
+                <p>Access patient history and details</p>
+            </a>
+
+            <a href="departments.html" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3>Departments</h3>
+                <p>View hospital departments</p>
+            </a>
+
+            <a href="reviews.html" class="action-card">
+                <div class="icon-box">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Reviews</h3>
+                <p>See patient feedback</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userJson = localStorage.getItem('currentUser');
+            if (!userJson) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(userJson);
+
+            // Check for Patient
+            if (user.patientname) {
+                document.getElementById('patientProfile').style.display = 'block';
+                document.getElementById('patientActions').style.display = 'grid';
+
+                document.getElementById('welcomeUser').textContent = `Welcome, ${user.patientname}!`;
+                document.getElementById('welcomeMessage').textContent = "Ready to manage your health journey?";
+
+                document.getElementById('pName').textContent = user.patientname;
+                document.getElementById('pCnic').textContent = user.cnicid || 'N/A';
+                document.getElementById('pAgeGender').textContent = `${user.age || ''} / ${user.gender || ''}`;
+                document.getElementById('pContact').textContent = user.mobilenumber || 'N/A';
+                document.getElementById('pEmail').textContent = user.email || 'N/A';
+                document.getElementById('pBlood').textContent = user.bloodgroup || 'N/A';
+                document.getElementById('pAddress').textContent = user.homeaddress || 'N/A';
+                document.getElementById('pGuardian').textContent = user.guardianname || 'N/A';
+
+                const allergies = user.allergies || '';
+                const diseases = user.diseses || '';
+                document.getElementById('pMedical').textContent = [allergies, diseases].filter(Boolean).join(', ') || 'None provided';
+            }
+            // Check for Doctor
+            else if (user.doctor) {
+                document.getElementById('doctorProfile').style.display = 'block';
+                document.getElementById('doctorActions').style.display = 'grid';
+
+                document.getElementById('welcomeUser').textContent = `Welcome, Dr. ${user.doctor}!`;
+                document.getElementById('welcomeMessage').textContent = "Here is your professional dashboard.";
+
+                document.getElementById('dName').textContent = user.doctor;
+                document.getElementById('dSpec').textContent = user.specialization || 'N/A';
+                document.getElementById('dDept').textContent = user.department || 'N/A';
+                document.getElementById('dReg').textContent = user.number || 'N/A';
+                document.getElementById('dCnic').textContent = user.cnicid || 'N/A';
+                document.getElementById('dContact').textContent = user.mobilenumber || 'N/A';
+                document.getElementById('dEmail').textContent = user.email || 'N/A';
+                document.getElementById('dCity').textContent = user.city || 'N/A';
+                document.getElementById('dJoin').textContent = user.date_of_joining || 'N/A';
+            }
+        });
+
+        // Logout
+        document.querySelector('.logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+
+</html>

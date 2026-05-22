@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/layout.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+      line-height: 1.5;
+    }
+    .wrapper {
+      background-color: #fff;
+      max-width: 900px;
+      padding: 30px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 25px;
+    }
+
+    h4 {
+      margin-bottom: 8px;
+      color: #007bff;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .input-box {
+      flex: 1;
+      position: relative;
+    }
+
+    .name,
+    input[type="date"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
+
+    .radio {
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .input-box label {
+      margin-right: 15px;
+      font-size: 14px;
+    }
+
+    .input-group:nth-of-type(3) .input-box:last-child {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group:nth-of-type(4) .input-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .input-box span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .input-group:nth-of-type(6) {
+      align-items: flex-start;
+    }
+
+    .input-group:nth-of-type(6) select {
+      margin-bottom: 8px;
+      padding-left: 12px;
+    }
+
+    button {
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    @media (max-width: 1024px) {
+      header {
+        padding: 16px 40px;
+      }
+
+      .wrapper {
+        max-width: 95%;
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 14px 20px;
+        text-align: center;
+      }
+
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      header nav a {
+        margin: 6px 10px;
+        font-size: 15px;
+      }
+
+      .wrapper {
+        margin: 30px 15px;
+        padding: 25px;
+      }
+
+      .input-group {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header .logo {
+        font-size: 22px;
+      }
+
+      header nav a {
+        font-size: 14px;
+        margin: 5px 8px;
+      }
+
+      .wrapper {
+        margin: 20px 10px;
+        padding: 22px 18px;
+      }
+
+      .wrapper h2 {
+        font-size: 22px;
+      }
+
+      h4 {
+        font-size: 15px;
+      }
+
+      .name,
+      input[type="date"],
+      input[type="tel"],
+      select {
+        font-size: 13px;
+        padding: 11px 12px 11px 38px;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 13px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      header {
+        padding: 12px 15px;
+      }
+
+      header .logo {
+        font-size: 20px;
+      }
+
+      header nav a {
+        font-size: 13px;
+      }
+
+      .wrapper {
+        padding: 18px 14px;
+      }
+
+      .wrapper h2 {
+        font-size: 20px;
+      }
+
+      .name,
+      input[type="date"],
+      input[type="tel"],
+      select {
+        font-size: 12px;
+        padding-left: 36px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Hospital</div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+ 
+  <div class="wrapper">
+    <h2>Payment Form</h2>
+    <form method="POST">
+      <h4>Account</h4>
+      <div class="input-group">
+        <div class="input-box">
+          <input type="text" placeholder="Full Name" required class="name">
+          <i class="fa fa-user icon"></i>
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Nick Name" required class="name">
+          <i class="fa fa-user icon"></i>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <input type="email" placeholder="Email Adress" required class="name">
+          <i class="fa fa-envelope icon"></i>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <h4> Date of Birth</h4>
+          <input type="date" required name="date of birth">
+        </div>
+        <div class="input-box">
+          <h4> Gender</h4>
+          <label for="b1"><span>Male</span>
+            <input type="radio" id="b1" name="gendar" checked class="radio"></label>
+          <label for="b2"><span>Female</span>
+            <input type="radio" id="b2" name="gendar" class="radio"></label>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <h4>Payment Details</h4>
+          <label for="bc1"><span><i class="fa fa-cc-visa"></i> Credit Card</span>
+            <input type="radio" name="pay" id="bc1" checked class="radio"></label>
+          <label for="bc2"><span><i class="fa fa-cc-paypal"></i> Paypal</span>
+            <input type="radio" name="pay" id="bc2" class="radio"></label>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <input type="tel" placeholder="Card Number" required class="name">
+          <i class="fa fa-credit-card icon"></i>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <input type="tel" placeholder="Card CVC" required class="name">
+          <i class="fa fa-user icon"></i>
+        </div>
+        <div class="input-box">
+          <select>
+            <option>01 jun</option>
+            <option>02 jun</option>
+            <option>03 jun</option>
+          </select>
+          <select>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+          </select>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <button type="submit">PAY NOW</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

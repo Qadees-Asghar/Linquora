@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book your Appointment</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <style>
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 35px 40px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .container h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #007bff;
+    }
+
+    .container p {
+      text-align: center;
+      margin-bottom: 35px;
+      color: #666;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .form-group {
+      flex: 1 1 48%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      flex: 1 1 100%;
+    }
+
+    .form-group label {
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 12px 14px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1.5px solid #dcdcdc;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    }
+
+    .button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .button input {
+      background: #007bff;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 14px 50px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 123, 255, 0.35);
+    }
+
+    .button input:hover {
+      background: #0056b3;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        max-width: 95%;
+        padding: 30px 30px;
+      }
+
+      .container h1 {
+        font-size: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 30px 15px;
+        padding: 28px 25px;
+      }
+
+      form {
+        gap: 20px;
+      }
+
+      .form-group {
+        flex: 1 1 100%;
+      }
+
+      .container h1 {
+        font-size: 28px;
+      }
+
+      .container p {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container {
+        margin: 20px 10px;
+        padding: 24px 18px;
+      }
+
+      .container h1 {
+        font-size: 24px;
+      }
+
+      .container p {
+        font-size: 14px;
+        margin-bottom: 25px;
+      }
+
+      input,
+      select,
+      textarea {
+        font-size: 14px;
+        padding: 11px 12px;
+      }
+
+      .button input {
+        font-size: 16px;
+        padding: 12px 40px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding: 20px 14px;
+      }
+
+      .container h1 {
+        font-size: 22px;
+      }
+
+      .container p {
+        font-size: 13px;
+      }
+
+      .button input {
+        font-size: 15px;
+        padding: 11px 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Hospital</div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Schedule an Appointment</h1>
+    <p>Expert care is just a few clicks away</p>
+    <form action="appointment" method="post">
+      <div class="form-group">
+        <label for="patientname">Patient Name</label>
+        <input type="text" placeholder="Enter your full name" required name="patientname">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone No.</label>
+        <input type="text" placeholder="Enter your number" required name="phone">
+      </div>
+      <div class="form-group full-width">
+        <label for="doctor">Select Doctor</label>
+        <select id="doctor" required name="doctor">
+          <option value="" disabled selected>Choose a Specialist</option>
+          <optgroup label="Emergency">
+            <option value="conrad">Dr. Conrad Hawkins</option>
+            <option value="bashir">Dr. Bashir Hameed</option>
+            <option value="mags">Dr. Magalie Leblanc</option>
+            <option value="devon">Dr. Devon Pravesh</option>
+          </optgroup>
+          <optgroup label="Cardiology">
+            <option value="aj">Dr. AJ Austin</option>
+            <option value="bell">Dr. Randolph Bell</option>
+            <option value="topher">Dr. Topher Callahan</option>
+            <option value="bloom">Dr. Lauren Bloom</option>
+          </optgroup>
+          <optgroup label="Orthopedics">
+            <option value="voss">Dr. Kit Voss</option>
+            <option value="morgan">Dr. Morgan Reznick</option>
+            <option value="irving">Dr. Irving Feldman</option>
+            <option value="jordon">Dr. Jordon Alexander</option>
+          </optgroup>
+          <optgroup label="Pediatrics">
+            <option value="iggy">Dr. Iggy Frome</option>
+            <option value="theo">Dr. Theo Hunter</option>
+            <option value="kincaid">Dr. Kincaid Sullivan</option>
+            <option value="nic">Dr. Nicolette Nevin</option>
+          </optgroup>
+          <optgroup label="Neurology">
+            <option value="billie">Dr. Billie Sutton</option>
+            <option value="cain">Dr. Barrett Cain</option>
+            <option value="reynolds">Dr. Floyd Reynolds</option>
+            <option value="shawn">Dr. Shawn Murphy</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Appointment Date</label>
+        <input type="date" required name="date">
+      </div>
+      <div class="form-group">
+        <label for="time">Preferred Time</label>
+        <select id="time" name="time">
+          <option>Morning (09:00 AM - 12:00 PM)</option>
+          <option>Afternoon (01:00 PM - 04:00 PM)</option>
+          <option>Evening (05:00 PM - 08:00 PM)</option>
+        </select>
+      </div>
+      <div class="form-group full-width">
+        <label for="notes">Reason for Visit / Symptoms</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="Briefly describe your health concern..."></textarea>
+      </div>
+      <div class="button">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
